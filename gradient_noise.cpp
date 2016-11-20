@@ -11,28 +11,28 @@ template<typename float_type, std::size_t dimension_count>
 float_type gnd::gradient_noise<float_type, dimension_count>::operator()(std::array<float_type, dimension_count> position){
 	std::array<seed_type, dimension_count> unit_position; // The unit position
 	std::array<float_type, dimension_count> offset_position = position; // The unit position offset
-	for(std::size_t dimension = 0; dimension < dimension_count; dimension++){
+	for(std::size_t dimension = 0; dimension < dimension_count; dimension++){ // For every dimension
 		unit_position[dimension] = (int)floor(position[dimension]);
 		offset_position[dimension] -= unit_position[dimension];
 	}
 	std::array<float_type, (std::size_t)pow(4, (double)dimension_count)> nodes; // The psuedorandom nodes to be interpolated
-	for(std::size_t node = 0; node < nodes.size(); node++){
-		std::array<seed_type, dimension_count> node_position;
-		for(std::size_t dimension = 0; dimension < dimension_count; dimension++){
+	for(std::size_t node = 0; node < nodes.size(); node++){ // For every node
+		std::array<seed_type, dimension_count> node_position; // The node's position is seed_type because it's used as a seed
+		for(std::size_t dimension = 0; dimension < dimension_count; dimension++){ // For every dimension
 			node_position[dimension] = (node / (int)pow(4, (double)dimension)) % 4 + unit_position[dimension];
 		}
 		std::seed_seq seq(node_position.begin(), node_position.end()); // Make a seed sequence from the node position
-		std::array<seed_type, 1> node_seed;
+		std::array<seed_type, 1> node_seed; // An array with only one value lol
 		seq.generate(node_seed.begin(), node_seed.end()); // Get the node seed
-		node_seed[0] |= m_seed; // Apply base seed
+		node_seed[0] |= m_seed; // Apply the private seed
 		engine_type engine(node_seed[0]);
 		engine.discard(discard_count); // Escape from zero-land
 		nodes[node] = distribution_type(-1.0, 1.0)(engine); // Get node value
 	}
-	for(std::size_t dimension = 0; dimension < dimension_count; dimension++){
+	for(std::size_t dimension = 0; dimension < dimension_count; dimension++){ // For every dimension
 		const auto interpolated_node_count = (nodes.size() / 4) / (int)pow(4, (double)dimension);
 		for(std::size_t interpolated_node = 0; interpolated_node < interpolated_node_count; interpolated_node++){
-			auto node = interpolated_node * 4;
+			auto node = interpolated_node * 4; // Interpolated nodes overwrite the nodes - Kinda weird
 			nodes[interpolated_node] = cerp(nodes[node], nodes[node + 1], nodes[node + 2], nodes[node + 3],	offset_position[dimension]);
 		}
 	}
