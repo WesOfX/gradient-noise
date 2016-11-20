@@ -41,6 +41,6 @@ float_type gnd::gradient_noise<float_type, dimension_count>::operator()(std::arr
 
 template<typename float_type, std::size_t dimension_count>
 float_type gnd::gradient_noise<float_type, dimension_count>::cerp(float_type y0, float_type y1, float_type y2, float_type y3, float_type mu){
-	float_type a0 = y3 - y2 - y0 + y1, a1 = y0 - y1 - a0, a2 = y2 - y0,	a3 = y1, mu2 = mu * mu;
+	float_type a0 = y3 - y2 - y0 + y1, a1 = y0 - y1 - a0, a2 = y2 - y0, a3 = y1, mu2 = mu * mu;
 	return a0 * mu * mu2 + a1 * mu2 + a2 * mu + a3;
 }
