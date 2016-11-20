@@ -11,7 +11,7 @@ public:
 	typedef std::default_random_engine engine_type; // The type of the engine
 	typedef std::uniform_real_distribution<float_type> distribution_type; // The type of the distribution
 	typedef engine_type::result_type seed_type; // The type of the seed of the engine and the noise
-	static constexpr unsigned int minimum_discard_count = 1; // The number of random numbers discarded after a new engine seed
+	static constexpr unsigned int discard_count = 1; // The number of random numbers discarded after a new engine seed
 	gradient_noise(engine_type::result_type seed = engine_type::default_seed); // Construct gradient noise with an optional seed
 	void seed(seed_type val = engine_type::default_seed); // Seed the gradient noise
 	float_type operator()(std::array<float_type, dimension_count> position); // Return a noise value from an n-dimensional position

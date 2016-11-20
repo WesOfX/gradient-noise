@@ -26,7 +26,7 @@ float_type gnd::gradient_noise<float_type, dimension_count>::operator()(std::arr
 		seq.generate(node_seed.begin(), node_seed.end()); // Get the node seed
 		node_seed[0] |= m_seed; // Apply base seed
 		engine_type engine(node_seed[0]);
-		engine.discard(minimum_discard_count); // Escape from zero-land
+		engine.discard(discard_count); // Escape from zero-land
 		nodes[node] = distribution_type(-1.0, 1.0)(engine); // Get node value
 	}
 	for(std::size_t dimension = 0; dimension < dimension_count; dimension++){
