@@ -1,9 +1,14 @@
 # Gradient Noise
-## Gradient noise with a templated number of dimensions.
+#### Gradient noise with a templated number of dimensions.
+
+[2D animation of 4D gradient noise](http://i.imgur.com/MgTW1Og.mp4)
+[2D animation of 3D gradient noise](http://i.imgur.com/bvJ1E7h.mp4)
+[2D image of 2D gradient noise](http://i.imgur.com/RO3qT7k.png)
+[2D image of 1D gradient noise](http://i.imgur.com/iClvq3j.png)
 
   Gradient noise is created by interpolating pseudorandom numbers in an n-dimensional space. To get pseudorandom numbers from an n-dimensional position, an `std::seed_seq` is used. A cubic interpolation function is used to interpolate the pseudorandom numbers.
 
-  To generate gradient noise, create a `gradient_noise` object and use the `operator()` overload to return noise values. Noise values are between -1 and 1. `gradient_noise` is declared inside the `gnd` namespace. `gradient_noise` takes two template parameters. The first template parameter, `float_type`, determines the return type and input parameter type of the `gradient_noise`. The second template parameter, `dimension_count`, determines the number of dimensions (the number of input parameters). Optionally, `gradient_noise` can be constructed with a seed. `gradient_noise` can also be reseeded using the `seed` method. [Example of 3D noise displayed as a 2D animation.](http://i.imgur.com/rWYexNJ.mp4) *Example code below.*
+  To generate gradient noise, create a `gradient_noise` object and use the `operator()` overload to return noise values. Noise values are between -1 and 1. `gradient_noise` is declared inside the `gnd` namespace. `gradient_noise` takes two template parameters. The first template parameter, `float_type`, determines the return type and input parameter type of the `gradient_noise`. The second template parameter, `dimension_count`, determines the number of dimensions (the number of input parameters). Optionally, `gradient_noise` can be constructed with a seed. `gradient_noise` can also be reseeded using the `seed` method. *Example code below.*
 ```
 // Create a 3D gradient noise engine using 42 as a seed
 gnd::gradient_noise<float, 3> gradientNoise3d(42);
