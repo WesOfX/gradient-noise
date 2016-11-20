@@ -1,13 +1,13 @@
 # Gradient Noise
 ## Gradient noise with a templated number of dimensions
 
-[2D animation of 4D gradient noise](http://i.imgur.com/MgTW1Og.mp4)
+[Animation of 4D gradient noise](http://i.imgur.com/MgTW1Og.mp4)
 
-[2D animation of 3D gradient noise](http://i.imgur.com/bvJ1E7h.mp4)
+[Animation of 3D gradient noise](http://i.imgur.com/bvJ1E7h.mp4)
 
-[2D image of 2D gradient noise](http://i.imgur.com/RO3qT7k.png)
+[Image of 2D gradient noise](http://i.imgur.com/RO3qT7k.png)
 
-[2D image of 1D gradient noise](http://i.imgur.com/iClvq3j.png)
+[Image of 1D gradient noise](http://i.imgur.com/iClvq3j.png)
 
 ### How it works
   Gradient noise is created by interpolating pseudorandom numbers in an n-dimensional space. To get pseudorandom numbers from an n-dimensional position, an `std::seed_seq` is used. A cubic interpolation function is used to interpolate the pseudorandom numbers.
