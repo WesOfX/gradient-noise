@@ -1,6 +1,6 @@
 # Gradient Noise
-## Gradient noise function with a templated number of dimensions.
-To use gradient noise, create a `gradient_noise` object and use the `operator()` overload. `gradient_noise` is declared inside the `gnd` namespace.`gradient_noise` takes two template parameters. The first template parameter, `float_type`, determines the return type and input parameter type of the `gradient_noise`. The second template parameter, `dimension_count`, determins the number of dimensions (the number of input parameters). *Example code below*
+## Gradient noise with a templated number of dimensions.
+To use gradient noise, create a `gradient_noise` object and use the `operator()` overload to return noise values. Noise values are between -1 and 1. `gradient_noise` is declared inside the `gnd` namespace.`gradient_noise` takes two template parameters. The first template parameter, `float_type`, determines the return type and input parameter type of the `gradient_noise`. The second template parameter, `dimension_count`, determines the number of dimensions (the number of input parameters). Optionally, `gradient_noise` can be constructed with a seed. `gradient_noise` can also be reseeded using the `seed` method. *Example code below*
 ```
 // Create a 3D gradient noise engine using 42 as a seed
 gnd::gradient_noise<float, 3> gradientNoise3d(42);
