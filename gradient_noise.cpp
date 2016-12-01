@@ -82,4 +82,3 @@ float_type gnd::gradient_noise<float_type, dimension_count>::cerp(float_type y0,
 	return a0 * mu * mu2 + a1 * mu2 + a2 * mu + a3;
 }
 
-template class gnd::gradient_noise<double, 2>;
